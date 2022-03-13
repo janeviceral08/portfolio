@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,300,400,500,600,700,800, 800i, 900&display=swap');
+
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  /*
+        Purple: hsl(250, 66%, 75%)
+        Blue: hsl(207, 90%, 72%)
+        Pink: hsl(356, 66%, 75%)
+        Teal: hsl(174, 63%, 62%)
+  */
+  --first-hue: 250;
+  --sat: 66%;
+  --lig: 75%;
+  --second-hue: 219;
+  --first-color: hsl(var(--first-hue), var(--sat), var(--lig));
+  --first-color-alt: hsl(var(--first-hue), var(--sat), 71%); /* -4% */
+  --title-color: hsl(var(--second-hue), 15%, 95%);
+  --text-color: hsl(var(--second-hue), 8%, 75%);
+  --text-color-light: hsl(var(--second-hue), 4%, 55%);
+  --body-color: hsl(var(--second-hue), 48%, 8%);
+  --container-color: hsl(var(--second-hue), 32%, 12%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: 'Poppins', sans-serif;
+  --biggest-font-size: 1.75rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+  --tiny-font-size: .625rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semibold: 600;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
+}
+
+/* Responsive typography */
+@media screen and (min-width: 968px) {
+  :root {
+    --biggest-font-size: 2.5rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+}
+
+
+
+.containerWorks {
+    position: relative;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.containerWorks .cardWorks {
+    position: relative;
+    width: 320px;
+    height: 380px;
+    background: #2c3e50;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.containerWorks .cardWorks:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #18bc9c;
+    clip-path: circle(150px at 80% 20%);
+    transition: 0.5s ease-in-out;
+}
+
+.containerWorks .cardWorks:hover:before {
+    clip-path: circle(300px at 80% -20%);
+}
+
+.containerWorks .cardWorks:after {
+    content: "Works";
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    font-size: 7em;
+    font-weight: 800;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.04);
+
+}
+
+.containerWorks .cardWorks .imgBxWorks {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    transition: .5s;
+}
+
+.containerWorks .cardWorks:hover .imgBxWorks {
+    top: 10%;
+    transform: translateY(-25%);
+    /* bug  */
+}
+
+.containerWorks .cardWorks .imgBxWorks img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    width: 270px;
+}
+
+.containerWorks .cardWorks .contentBxWorks {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 90px;
+    text-align: center;
+    transition: 1s;
+    z-index: 90;
+}
+
+.containerWorks .cardWorks:hover .contentBxWorks {
+    height: 140px;
+}
+
+.containerWorks .cardWorks .contentBxWorks p {
+    position: relative;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fff;
+    font-size: 20px;
+}
+
+.containerWorks .cardWorks .contentBxWorks .sizeWorks,
+.containerWorks .cardWorks .contentBxWorks .colorWorks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    transition: .5s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.containerWorks .cardWorks:hover .contentBxWorks .sizeWorks {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: .5s;
+}
+
+.containerWorks .cardWorks:hover .contentBxWorks .colorWorks {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: .6s;
+}
+
+.containerWorks .cardWorks .contentBxWorks .sizeWorks h3,
+.containerWorks .cardWorks .contentBxWorks .colorWorks h3 {
+    color: white;
+    font-weight: 300;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-right: 10px;
+}
+
+.containerWorks .cardWorks .contentBxWorks .sizeWorks span {
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    font-size: 14px;
+    display: inline-block;
+    color: #111;
+    background: #fff;
+    margin: 0 5px;
+    transition: .5s;
+    color: #111;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.containerWorks .cardWorks .contentBxWorks .sizeWorks span:hover {  /* other bug */
+    background: #B90000;
+}
+
+.containerWorks .cardWorks .contentBxWorks .colorWorks span {
+    width: 20px;
+    height: 20px;
+    background: #ff0;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.containerWorks .cardWorks .contentBxWorks .colorWorks span:nth-child(2) {
+     background: #18bc9c;
+}
+
+.containerWorks .cardWorks .contentBxWorks .colorWorks span:nth-child(3) {
+     background: #1B2FE9;
+}
+
+.containerWorks .cardWorks .contentBxWorks .colorWorks span:nth-child(4) {
+     background: #080481;
+}
+
+.containerWorks .cardWorks .contentBxWorks a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #fff;
+    border-radius: 4px;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #111;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: .5s;
+}
+
+.containerWorks .cardWorks:hover .contentBxWorks a {
+    opacity: 1;
+    transform: translateY(0px);
+    transition-delay: .7s;
+} 
+
+
+
+/*=== ABOUT ===*/
+.about__container{
+row-gap: 2.5rem;
+}
+.about__img{
+border-radius: 1.5rem;
+justify-self: center;
+}
+.about__data{
+text-align: center; 
+}
+
+.about__info{
+display: grid;
+grid-template-columns: repeat(3,1fr);
+gap: .5rem;
+margin-bottom: 2rem;
+}
+
+.about__box{
+    background-color: #2c3e50;
+     border-radius: .75rem;
+     padding: .75rem .5rem;
+}
+
+.about__icon{
+    font-size: 1.5rem;
+     color: var(--first-color);
+    margin-bottom: .5rem;
+   }
+.about__title{
+    font-size: var(--small-font-size);
+}
+
+.about__subtitle{
+    font-size: var(--tiny-font-size);
+}
+
+.about__description{
+    margin-bottom: 2rem;
+}
+
+   
+/* ====== skills ===== */
+.containerSkills {
+    max-width: 968px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  
+  .gridSkills {
+    display: grid;
+    gap: 1.25rem;
+  }
+  
+
+
+
+.skills__container{
+row-gap: 2rem;
+padding-top: 1rem;
+}
+.skills__content{
+background-color: #2c3e50;
+padding: 1.5rem;
+border-radius: 1.25rem;
+}
+.skills__title{
+    font-size: var(--normal-font-size);
+    font-size: var(--font-medium);
+    color: white;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.skills__box{
+    display: flex;
+    justify-content: center;
+    column-gap: 2.5rem;
+}
+
+.skills__group{
+    display: grid;
+    align-content: flex-start;
+    row-gap: 1rem;
+
+}
+
+.skills__data{
+        display: flex;
+        column-gap: .5rem;
+}
+
+.skills .fa-check-circle{
+    font-size: 1rem;
+    color: white;
+}
+.skills__name{
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
+    color: white;
+}
+.skills__level{
+    font-size: var(--tiny-font-size);
+    color: white;
+}
